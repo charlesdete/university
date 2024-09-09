@@ -1,0 +1,123 @@
+[
+    {  
+             "name": "The Rustic Spoon",
+      "cuisine":     "American",
+      "location": "New York, NY",
+      "contact": "(212) 555-1234"
+    },
+    {
+      "name": "Sushi Zen",
+      "cuisine": "Japanese",
+      "location": "San Francisco, CA",
+      "contact": "(415) 555-5678"
+    },
+    {
+      "name": "La Dolce Vita",
+      "cuisine": "Italian",
+      "location": "Los Angeles, CA",
+      "contact": "(323) 555-7890"
+    },
+    {
+      "name": "Taco Fiesta",
+      "cuisine": "Mexican",
+      "location": "Houston, TX",
+      "contact": "(713) 555-2468"
+    },
+    {
+      "name": "Spice Route",
+      "cuisine": "Indian",
+      "location": "Chicago, IL",
+      "contact": "(312) 555-6543"
+    },
+    {
+      "name": "Dragon Palace",
+      "cuisine": "Chinese",
+      "location": "Seattle, WA",
+      "contact": "(206) 555-9876"
+    },
+    {
+      "name": "Bistro Paris",
+      "cuisine": "French",
+      "location": "Miami, FL",
+      "contact": "(305) 555-1234"
+    },
+    {
+      "name": "Le Jardin",
+      "cuisine": "Mediterranean",
+      "location": "Austin, TX",
+      "contact": "(512) 555-5678"
+    },
+    {
+      "name": "Steakhouse Prime",
+      "cuisine": "Steakhouse",
+      "location": "Las Vegas, NV",
+      "contact": "(702) 555-7890"
+    },
+    {
+      "name": "Vegan Delight",
+      "cuisine": "Vegan",
+      "location": "Portland, OR",
+      "contact": "(503) 555-2468"
+    },
+    {
+      "name": "Blue Ocean",
+      "cuisine": "Seafood",
+      "location": "Boston, MA",
+      "contact": "(617) 555-6543"
+    },
+    {
+      "name": "Tapas Plaza",
+      "cuisine": "Spanish",
+      "location": "Philadelphia, PA",
+      "contact": "(215) 555-9876"
+    },
+    {
+      "name": "Middle Eastern Grill",
+      "cuisine": "Middle Eastern",
+      "location": "Phoenix, AZ",
+      "contact": "(602) 555-1234"
+    },
+    {
+      "name": "Burger Haven",
+      "cuisine": "American",
+      "location": "Dallas, TX",
+      "contact": "(214) 555-5678"
+    },
+    {
+      "name": "Ramen House",
+      "cuisine": "Japanese",
+      "location": "Denver, CO",
+      "contact": "(303) 555-7890"
+    },
+    {
+      "name": "The Curry Pot",
+      "cuisine": "Indian",
+      "location": "San Diego, CA",
+      "contact": "(619) 555-2468"
+    },
+    {
+      "name": "Pho Paradise",
+      "cuisine": "Vietnamese",
+      "location": "Atlanta, GA",
+      "contact": "(404) 555-6543"
+    },
+    {
+      "name": "Pita Palace",
+      "cuisine": "Greek",
+      "location": "Orlando, FL",
+      "contact": "(407) 555-9876"
+    },
+    {
+      "name": "The BBQ Joint",
+      "cuisine": "Barbecue",
+      "location": "Nashville, TN",
+      "contact": "(615) 555-1234"
+    },
+    {
+      "name": "Brasserie Bonaparte",
+      "cuisine": "French",
+      "location": "New Orleans, LA",
+      "contact": "(504) 555-5678"
+    }
+  ]
+  

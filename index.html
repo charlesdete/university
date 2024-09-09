@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=10">
+        <title>Uni-Search App</title>
+        <link rel="stylesheet" href="style.css">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v3.6.0/mapbox-gl.js"></script>
+    </head>
+    <body>
+        <div class="up-wrapper"></div>
+            <div class="wrapper">
+                <div class="wrapper-title">
+                    <h2>World Universities</h2>
+                </div>
+                    <div class="search-card">
+                            <div class="search-space">
+                                <input type="text" placeholder="Enter city name" spellcheck="false">
+                                <button onclick="fetchUni(input.value)"><img src="images/search.png">  </button>
+                            </div>
+                            <div class="search-card-img">
+                                <img src="images/stu1.jpeg">
+                            </div>
+                    </div>
+                    <div class="error">
+                        <p class="err"></p>
+                    </div>
+                    <div class="details">
+                        <ul class="list-group ">
+                            <li class="list-group-item-name"></li>
+                            <a class="list-group-item" href=""> </a>
+                            
+                          </ul>
+                    </div>
+            </div>
+            <div class="down-wrapper">
+                <div class="dwrapper-text">
+                <h2>Universities ignite minds, foster innovation, and shape future global leaders.</h2>
+                </div>
+                <div class="wrapper2">
+  
+
+                        <div  id="map"></div>
+
+
+                        <!-- Load the `mapbox-gl-geocoder` plugin. -->
+                        <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+                        <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+
+                                        </div>
+                        <div class="map-details"></div>               
+            </div>
+            <div class="wrapper3">
+
+                
+            </div>
+            <script>
+            
+        
+          const universtiy = document.querySelector('.search-space input');
+          const button = document.querySelector('.search-space button');
+
+          apiUrl = 'http://universities.hipolabs.com/search?name=';
+          async function fetchUni(universtiy) {
+            try{
+          const response = await fetch(apiUrl + universtiy)
+          
+                var data = await response.json();      
+                console.log(data);
+
+                if(response.status === 404){
+                    
+                    document.querySelector(".err").innerHTML =response.statusText; 
+                    document.querySelector(".error").style.display = "block";
+                    return ;
+                    
+                   }
+         
+            
+    if (data.length === 0) {
+      document.querySelector(".err").innerHTML = '';
+      document.querySelector(".error").style.display = "block";
+      document.querySelector(".details").style.display = "none";
+      return;
+    }
+
+    // Assuming data is an array and we want to display details for the first result
+    const university = data[0];
+    const domain= university.domains.join(', ');
+    const name = university.name;
+    const country = university.country;
+
+    document.querySelector(".list-group-item-name").innerHTML = `${name}`;
+    document.querySelector(".list-group-item").innerHTML = `Link: ${domain}`;
+    document.querySelector(".details").style.display = "block";
+    document.querySelector(".err").style.display = "none";
+
+
+
+
+const LocUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
+const locApiKey = 'pk.eyJ1IjoiYnJvbm55amFtZXMiLCJhIjoiY2x4eXFtZ3FpMDJybzJpcXVxbTllc3V5NSJ9.XmAzlD5mHhdGHDvJjClD2A';
+
+async function geolocation(name) {
+    try {
+        const response = await fetch(`${LocUrl}${name}","${country}.json?access_token=${locApiKey}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        if(data.length === 0){
+            document.getElementById("map").style.display = "block";
+           
+            return
+        }
+
+
+        if (data.features.length > 0) {
+            const location = data.features[0].geometry.coordinates;
+            const latitude = location[1];
+            const longitude = location[0];
+            console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+            document.querySelector(".wrapper2").style.display = "block";
+            
+mapboxgl.accessToken = 'pk.eyJ1IjoiYnJvbm55amFtZXMiLCJhIjoiY2x4eXFtZ3FpMDJybzJpcXVxbTllc3V5NSJ9.XmAzlD5mHhdGHDvJjClD2A';
+    const map = new mapboxgl.Map({
+        container: 'map',
+        // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [longitude,latitude],
+        zoom: 13
+    });
+
+    // Add the control to the map.
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            mapboxgl: mapboxgl
+        })
+    );
+        } else {
+            console.log('No results found.');
+        }
+    } catch (error) {
+        console.error('Error fetching geolocation:', error);
+    }
+}
+
+// Example usage:
+geolocation(name);
+
+
+
+            }catch(err){
+                console.error(err.message);
+                document.querySelector(".details").style.display="none";
+            }
+
+          }
+
+          button.addEventListener("click", ()=>{
+            fetchUni(universtiy.value);
+        }  )
+
+fetchUni(universtiy);
+        
+// get search input coordinate
+
+
+
+
+async function getRestaurants(){
+    const res = await fetch("res.json")
+    const parsedResult = await res.json();
+    return parsedResult;
+}
+            </script>
+            <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.3.1/mapbox-gl-directions.js"></script>
+    </body>
+</html>
